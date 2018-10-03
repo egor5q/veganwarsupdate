@@ -212,7 +212,7 @@ def add_player(message):
             bot.send_message(message.from_user.id, 'Вы присоединились к игре.', parse_mode='markdown')
             if game.gametype == game.gametypes[0] and message.from_user.id not in game.marked_id \
                     and message.chat.id == game.cid and game.gamestate == game.gamestates[0]:
-                player = Main_classes.Player(message.from_user.id, message.from_user.first_name.split(' ')[0][:12], Weapon_list.fists,
+                player = Main_classes.Player(message.from_user.id, message.from_user.username, Weapon_list.fists,
                                          game, message.from_user.username)
                 game.pending_players.append(player)
                 game.marked_id.append(player.chat_id)
