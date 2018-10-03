@@ -218,13 +218,13 @@ def add_player(message):
             if game.gametype == game.gametypes[0] and message.from_user.id not in game.marked_id \
                     and message.chat.id == game.cid and game.gamestate == game.gamestates[0]:
                 no=0
-                for ids in m.from_user.first_name:
+                for ids in message.from_user.first_name:
                     if ids.lower() not in symbols:
                         no=1
                 if no==0:
                     name=message.from_user.first_name.split(' ')[0][:12]
                 else:
-                    name=m.from_user.username
+                    name=message.from_user.username
                 player = Main_classes.Player(message.from_user.id, name, Weapon_list.fists,
                                          game, message.from_user.username)
                 game.pending_players.append(player)
